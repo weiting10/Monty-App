@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    // Dark green table color
+    // Dark green background color
     private let tableGreen = Color(red: 0.05, green: 0.25, blue: 0.10)
 
     // Which of the 3 cards is the ace
@@ -15,20 +15,23 @@ struct ContentView: View {
 
     var body: some View {
         ZStack {
-            // Background fills the whole screen, including behind the notch/home bar
+            // set background
             tableGreen
                 .ignoresSafeArea()
 
             VStack(spacing: 24) {
                 
 
-                // Winner / Loser images share the same space; opacity shows the right one
+                // Winner / Loser images s
                 Spacer()
                 ZStack {
                     Image("winner")
                         .resizable()
                         .scaledToFit()
                         .opacity(roundOver && didWin ? 1 : 0)
+                    //.opacity(1) is fully visible;
+                    //.opacity(0) is fully invisible;
+                    
 
                     Image("loser")
                         .resizable()
@@ -39,12 +42,14 @@ struct ContentView: View {
 
                 HStack(spacing: 12) {
                     ForEach(0..<3, id: \.self) { index in
+                        // call CardView
                         CardView(
+                            //"index" is the card the user picks;
                             faceImage: index == aceIndex ? "ace" : "blank",
-                            isRevealed: revealed[index]
+                            isRevealed: revealed[index] // change that index from "false" to "true" in "revealed[]"
                         )
                         .onTapGesture {
-                            pick(index)
+                            pick(index) // this function mark the card revealed and works out if the user won
                         }
                     }
                 }
@@ -57,7 +62,7 @@ struct ContentView: View {
                     newGame()
                 }
                 .tint(.white)
-                //.disabled(!roundOver)   // disabled during a round, enabled after win/loss
+                .disabled(!roundOver)   // disabled during a round, enabled after win/loss
             }
             .padding()
         }
@@ -74,6 +79,7 @@ struct ContentView: View {
         roundOver = true
     }
 
+    // when starting a new game, reset the "revealed[]" and "roundOver" to false
     private func newGame() {
         aceIndex = Int.random(in: 0..<3)
         revealed = [false, false, false]
