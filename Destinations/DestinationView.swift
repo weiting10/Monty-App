@@ -1,3 +1,10 @@
+//  DestinationsApp.swift
+//  Destinations
+//
+//  Created by Tan, Weiting on 10/14/26.
+
+// This screen comes from "Get your next destination". It shows a randomly generated destination’s photo, name and description.
+
 import SwiftUI
 
 struct DestinationView: View {

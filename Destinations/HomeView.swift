@@ -2,8 +2,10 @@
 //  HomeView.swift
 //  Destinations
 //
-//  Created by Tan, Weiting on 10/5/26.
+//  Created by Tan, Weiting on 10/14/26.
 //
+
+// This is the home screen and the starting point. “Places I’ve been” opens the visited list. “Get your next destination” picks a random destination and opens its page.
 
 import SwiftUI
 

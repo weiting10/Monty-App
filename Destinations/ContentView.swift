@@ -5,12 +5,6 @@
 //  Created by Tan, Weiting on 10/14/26.
 //
 
-//
-//  ContentView.swift
-//  Destinations
-//
-//  Screen 2 of 4: the destination recommender.
-//
 
 import SwiftUI
 

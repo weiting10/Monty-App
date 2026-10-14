@@ -2,8 +2,9 @@
 //  DiaryView.swift
 //  Destinations
 //
-//  Screen 4 of 4: a diary page for one place (notes + photos).
+//  Created by Tan, Weiting on 10/14/26.
 //
+// This is the diary page for one place. It has the date picker, the notes box, and the photo grid, and “Add photos” opens the photo picker. Tapping a photo opens the viewer.
 
 import SwiftUI
 import PhotosUI
@@ -17,7 +18,7 @@ struct DiaryView: View {
     @State private var pickerItems: [PhotosPickerItem] = []
 
     @State private var visitDate = Date()
-    @State private var selectedPhoto: UIImage?
+    @State private var selectedFilename: String?
 
     private let columns = [GridItem(.adaptive(minimum: 100), spacing: 4)]
 
@@ -81,7 +82,7 @@ struct DiaryView: View {
                                         .clipped()
                                         .contentShape(Rectangle())
                                         .onTapGesture {
-                                            selectedPhoto = image
+                                            selectedFilename = filename
                                         }
                                         .contextMenu {
                                             Button("Delete photo", role: .destructive) {
@@ -118,11 +119,15 @@ struct DiaryView: View {
             }
         }
         .fullScreenCover(isPresented: Binding(
-            get: { selectedPhoto != nil },
-            set: { if !$0 { selectedPhoto = nil } }
+            get: { selectedFilename != nil },
+            set: { if !$0 { selectedFilename = nil } }
         )) {
-            if let selectedPhoto {
-                PhotoViewerView(image: selectedPhoto)
+            if let filename = selectedFilename,
+               let image = store.image(named: filename) {
+                PhotoViewerView(image: image) {
+                    store.removePhoto(filename, from: placeID)
+                    selectedFilename = nil
+                }
             }
         }
         .navigationBarTitleDisplayMode(.inline)

@@ -2,8 +2,10 @@
 //  VisitedPlacesView.swift
 //  Destinations
 //
-//  Screen 3 of 4: list of every place the user has been.
+//  Created by Tan, Weiting on 10/14/26.
 //
+//This file lists the places you’ve been, each with its visit date and photo count. The + button adds a place, and swiping a row deletes it.
+
 
 import SwiftUI
 

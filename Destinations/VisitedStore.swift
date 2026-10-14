@@ -2,8 +2,9 @@
 //  VisitedStore.swift
 //  Destinations
 //
-//  Stores the places the user has been, their diary notes, and photo files.
+//  Created by Tan, Weiting on 10/14/26.
 //
+// This file holds everything you’ve entered: places, visit dates, notes and photos.
 
 import SwiftUI
 

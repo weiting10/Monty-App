@@ -1,8 +1,7 @@
 //
 //  Destinations.swift
-//  Destinations
 //
-//  Created by Tan, Weiting on 9/14/26.
+//  Created by Tan, Weiting on 10/14/26.
 //
 
 
