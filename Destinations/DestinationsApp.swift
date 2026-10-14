@@ -2,20 +2,20 @@
 //  DestinationsApp.swift
 //  Destinations
 //
-//  Created by Tan, Weiting on 9/14/26.
+//  Created by Tan, Weiting on 10/5/26.
 //
-
 import SwiftUI
 
 @main
 struct DestinationsApp: App {
-    
     let destinations = Destinations()
-    
+    let visitedStore = VisitedStore()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
                 .environment(destinations)
+                .environment(visitedStore)
         }
     }
 }

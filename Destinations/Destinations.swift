@@ -33,29 +33,25 @@ class Destinations {
     
     
 
-    func current() -> (destination:String, description:String, image:String) {
-        
-        return (destinations[index],
-                destination_descriptions[index],
-                images[index])
+    func current() -> (destination: String, description: String, image: String) {
+        (destinations[index], destination_descriptions[index], images[index])
     }
- 
-    
-    func next() -> (destination:String, description:String, image:String) {
+
+    /// Jump to a random destination.
+    func randomize() {
+        index = Int.random(in: 0..<destinations.count)
+    }
+
+    func next() {
         index = (index + 1) % destinations.count
-        return (destinations[index],
-                destination_descriptions[index],
-                images[index])
     }
-    
+
+    func previous() {
+        index = (index - 1 + destinations.count) % destinations.count
+    }
+
     func select() -> String {
-        if index > 0 {
-                return "You have selected \n\(destinations[index - 1])"
-            } else {
-                return "You have selected \n\(destinations[destinations.count - 1])"
-            }
-        
-        
+        "You have selected \n\(destinations[index])"
     }
     
 }

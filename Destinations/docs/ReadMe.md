@@ -4,12 +4,13 @@ Instructor: Author Roolfs
 Name:   Weiting Tan
 Email:  wtan10@u.rochester.edu
 
-Assignment/Project #:   Homework 2
+Assignment/Project #:   Project 1
 
 Description:
 This project displays a destination's name, description, and image, along with two navigation buttons and a select button. When the user taps the right arrow, the app moves forward through 7 destinations in order, updating the name, image, and description shown. When the user taps the left arrow, the app moves backward through the same list. If the user taps "Select," the top text line updates to "You have selected" plus the current destination's name.    
 A new feature added to the original program is the rotating image. The path for continuous development of the program is a travel recommander. 
-
+Another new feature added to the original program is the home page. 
+This feature lets user press a button to randomly generate a destination for travel recommendation.
 
 Custom features (if applicable):
     _
@@ -22,4 +23,4 @@ If any documents are needed by the programers, create the documents for them and
     
 I affirm that I have not given or received any unauthorized help for this assignment, and that this work is my own.
 Date:   
-    09/28/26
+    10/05/26
