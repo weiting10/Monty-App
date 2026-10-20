@@ -43,8 +43,7 @@ struct ContentView: View {
         }
         .background(tableGreen.ignoresSafeArea())
     }
-
-    // MARK: - Game area
+   
 
     private var gameArea: some View {
         GeometryReader { geo in
@@ -81,8 +80,6 @@ struct ContentView: View {
         }
     }
 
-    // MARK: - Control strip
-
     private var controlStrip: some View {
         HStack(spacing: 120) {
             VStack(alignment: .leading, spacing: 2) {
@@ -92,12 +89,10 @@ struct ContentView: View {
             .font(.caption2)
             .foregroundStyle(.yellow)
             
-            
 
             Button("Reset") { reset() }
                 .tint(.green)
                 .disabled(phase != .over)
-            
             
 
             Button("Play") { play() }
@@ -110,8 +105,8 @@ struct ContentView: View {
         .background(Color(white: 0.12).ignoresSafeArea(edges: [.bottom, .horizontal]))
     }
 
-    // MARK: - Game logic
 
+    // Game logic
     private func play() {
         guard phase == .idle else { return }
         phase = .dealing                  // all buttons disabled

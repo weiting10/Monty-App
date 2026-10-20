@@ -1,7 +1,6 @@
 import SwiftUI
 
-/// A card that flips around the Y axis. The angle is animatable, so the
-/// image swaps from back to face exactly when the card is edge-on (90°).
+/// A card that flips around the Y axis for 90°.
 struct FlipCard: View, Animatable {
     var angle: Double          // 0 = back showing, 180 = face showing
     let faceImage: String
