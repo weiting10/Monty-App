@@ -107,7 +107,7 @@ struct ContentView: View {
         .frame(maxWidth: .infinity)
         .frame(height: 44)
         .padding(.bottom, 4)
-        .background(Color(white: 0.12).ignoresSafeArea(edges: .bottom))
+        .background(Color(white: 0.12).ignoresSafeArea(edges: [.bottom, .horizontal]))
     }
 
     // MARK: - Game logic
