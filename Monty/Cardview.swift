@@ -1,31 +1,42 @@
-//
-//  Cardview.swift
-//  Monty
-//
-//  Created by Tan, Weiting on 10/14/26.
-//
-
 import SwiftUI
 
-struct CardView: View {
-    /// Name of the image shown underneath: "ace" or "blank"
+/// A card that flips around the Y axis. The angle is animatable, so the
+/// image swaps from back to face exactly when the card is edge-on (90°).
+struct FlipCard: View, Animatable {
+    var angle: Double          // 0 = back showing, 180 = face showing
     let faceImage: String
-    /// When true, the card back is hidden (opacity 0) and the face shows
-    let isRevealed: Bool
+
+    var animatableData: Double {
+        get { angle }
+        set { angle = newValue }
+    }
 
     var body: some View {
         ZStack {
-            // Bottom card (ace or blank)
-            Image(faceImage)
-                .resizable()
-                .scaledToFit()
-
-            // Top card (card back), hidden with opacity when revealed
-            Image("cardback")
-                .resizable()
-                .scaledToFit()
-                .opacity(isRevealed ? 0 : 1)
+            if angle < 90 {
+                Image("cardback")
+                    .resizable()
+                    .scaledToFit()
+            } else {
+                Image(faceImage)
+                    .resizable()
+                    .scaledToFit()
+                    // counter-rotate so the face isn't mirrored
+                    .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
+            }
         }
+        .rotation3DEffect(.degrees(angle), axis: (x: 0, y: 1, z: 0))
+    }
+}
+
+struct CardView: View {
+    /// Name of the face image: "ace" or "blank"
+    let faceImage: String
+    /// true = face up, false = back showing
+    let isRevealed: Bool
+
+    var body: some View {
+        FlipCard(angle: isRevealed ? 180 : 0, faceImage: faceImage)
     }
 }
 
@@ -35,6 +46,6 @@ struct CardView: View {
 }
 
 #Preview("Revealed") {
-    CardView(faceImage: "blank", isRevealed: true)
+    CardView(faceImage: "ace", isRevealed: true)
         .padding()
 }
